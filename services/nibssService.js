@@ -59,7 +59,7 @@ const createAccount = async (accountData) => {
         const response = await axios.post(`${NIBSS_BASE_URL}/api/account/create`, accountData, {
             headers: { Authorization: `Bearer ${token}` }
         });
-        return response.data.data;
+        return response.data.account;
     } catch (error) {
         console.log('NIBSS Error:', error.response?.data);
         throw new Error('Failed to create account: ' + error.message);
@@ -73,7 +73,7 @@ const nameEnquiry = async (accountNumber) => {
         const response = await axios.get(`${NIBSS_BASE_URL}/api/account/name-enquiry/${accountNumber}`, {
             headers: { Authorization: `Bearer ${token}` }
         });
-        return response.data.data;
+        return response.data;
     } catch (error) {
         throw new Error('Failed to get account name: ' + error.message);
     }

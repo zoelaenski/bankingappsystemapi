@@ -43,23 +43,27 @@ const login = async (req, res) => {
 
 const verifyBvn = async (req, res) => {
     try {
-        const { firstName, lastName, dob, bvn, phone } = req.body;
-        await nibssService.insertBvn({ firstName, lastName, dob, bvn, phone });
+        const { bvn, dob } = req.body;
+        
         const validateBvn = await nibssService.validateBvn(bvn);
-        await Customer.findByIdAndUpdate(req.customer._id, {
+        console.log('validateBvn response:', JSON.stringify(validateBvn));
+        
+        if (!validateBvn) 
+            return res.status(400).json({ message: 'BVN not found' });
+
+        const updated = await Customer.findByIdAndUpdate(req.customer._id, {
             isVerified: true,
             bvn: bvn
         }, { new: true });
 
-        req.customer.bvn = bvn,
-            req.customer.isVerified = true;
+        console.log('Updated customer:', JSON.stringify(updated));
 
-        res.status(200).json({ message: 'Bvn is verified', bvn });
+        res.status(200).json({ message: 'Bvn verified successfully' });
     } catch (error) {
-        res.status(500).json({ message: 'Invalid Credentials', error: error.message });
+        console.log('verifyBvn error:', error.message);
+        res.status(500).json({ message: 'Verification failed', error: error.message });
     }
 };
-
 
 const verifyNin = async (req, res) => {
     try {
