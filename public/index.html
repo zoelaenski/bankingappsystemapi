@@ -1029,7 +1029,7 @@
       const data = await res.json();
       if (!res.ok) throw new Error(data.message);
 
-      const bal = data.balance?.balance ?? data.balance ?? '—';
+      const bal = data.balance?.data?.balance ?? data.balance?.balance ?? data.balance ?? '—';
       const acctNum = data.balance?.accountNumber ?? '—';
       document.getElementById('balanceAmount').textContent = Number(bal).toLocaleString('en-NG', { minimumFractionDigits: 2 });
       document.getElementById('accountNumber').textContent = acctNum;
