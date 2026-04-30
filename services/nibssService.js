@@ -85,7 +85,7 @@ const getBalance = async (accountNumber) => {
         const response = await axios.get(`${NIBSS_BASE_URL}/api/account/balance/${accountNumber}`, {
             headers: { Authorization: `Bearer ${token}` }
         });
-        return response.data.data;
+        return response.data;
     } catch (error) {
         throw new Error('Failed to get account balance: ' + error.message);
     }

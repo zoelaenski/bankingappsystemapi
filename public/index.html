@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZOE Bank</title>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
       --bg: #0a0c10;
@@ -15,7 +24,7 @@
       --border: #1e2330;
       --gold: #c9a84c;
       --gold-light: #e8c97a;
-      --gold-dim: rgba(201,168,76,0.12);
+      --gold-dim: rgba(201, 168, 76, 0.12);
       --text: #e8eaf0;
       --muted: #6b7280;
       --danger: #e05a5a;
@@ -36,16 +45,24 @@
       content: '';
       position: fixed;
       inset: 0;
-      background: 
-        radial-gradient(ellipse 80% 50% at 20% 10%, rgba(201,168,76,0.05) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 40% at 80% 90%, rgba(201,168,76,0.03) 0%, transparent 60%);
+      background:
+        radial-gradient(ellipse 80% 50% at 20% 10%, rgba(201, 168, 76, 0.05) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 90%, rgba(201, 168, 76, 0.03) 0%, transparent 60%);
       pointer-events: none;
       z-index: 0;
     }
 
     /* ── SCREENS ── */
-    .screen { display: none; min-height: 100vh; position: relative; z-index: 1; }
-    .screen.active { display: flex; }
+    .screen {
+      display: none;
+      min-height: 100vh;
+      position: relative;
+      z-index: 1;
+    }
+
+    .screen.active {
+      display: flex;
+    }
 
     /* ── AUTH SCREENS ── */
     .auth-wrap {
@@ -67,8 +84,15 @@
     }
 
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .logo {
@@ -80,7 +104,9 @@
       margin-bottom: 6px;
     }
 
-    .logo span { color: var(--text); }
+    .logo span {
+      color: var(--text);
+    }
 
     .auth-subtitle {
       font-size: 13px;
@@ -88,7 +114,9 @@
       margin-bottom: 32px;
     }
 
-    .form-group { margin-bottom: 18px; }
+    .form-group {
+      margin-bottom: 18px;
+    }
 
     label {
       display: block;
@@ -100,7 +128,8 @@
       margin-bottom: 8px;
     }
 
-    input, select {
+    input,
+    select {
       width: 100%;
       background: var(--surface2);
       border: 1px solid var(--border);
@@ -113,11 +142,14 @@
       transition: border-color 0.2s;
     }
 
-    input:focus, select:focus {
+    input:focus,
+    select:focus {
       border-color: var(--gold);
     }
 
-    input::placeholder { color: var(--muted); }
+    input::placeholder {
+      color: var(--muted);
+    }
 
     .btn {
       width: 100%;
@@ -134,8 +166,13 @@
       margin-top: 8px;
     }
 
-    .btn:hover { background: var(--gold-light); }
-    .btn:active { transform: scale(0.98); }
+    .btn:hover {
+      background: var(--gold-light);
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
 
     .btn-outline {
       background: transparent;
@@ -144,7 +181,11 @@
       margin-top: 10px;
     }
 
-    .btn-outline:hover { border-color: var(--gold); color: var(--gold); background: transparent; }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: transparent;
+    }
 
     .btn-danger {
       background: var(--danger);
@@ -173,12 +214,26 @@
       display: none;
     }
 
-    .alert.show { display: block; }
-    .alert-error { background: rgba(224,90,90,0.12); border: 1px solid rgba(224,90,90,0.3); color: #e05a5a; }
-    .alert-success { background: rgba(76,175,125,0.12); border: 1px solid rgba(76,175,125,0.3); color: #4caf7d; }
+    .alert.show {
+      display: block;
+    }
+
+    .alert-error {
+      background: rgba(224, 90, 90, 0.12);
+      border: 1px solid rgba(224, 90, 90, 0.3);
+      color: #e05a5a;
+    }
+
+    .alert-success {
+      background: rgba(76, 175, 125, 0.12);
+      border: 1px solid rgba(76, 175, 125, 0.3);
+      color: #4caf7d;
+    }
 
     /* ── DASHBOARD ── */
-    #dashboard { flex-direction: column; }
+    #dashboard {
+      flex-direction: column;
+    }
 
     .topbar {
       display: flex;
@@ -199,7 +254,9 @@
       color: var(--gold);
     }
 
-    .topbar-logo span { color: var(--text); }
+    .topbar-logo span {
+      color: var(--text);
+    }
 
     .topbar-right {
       display: flex;
@@ -212,7 +269,9 @@
       color: var(--muted);
     }
 
-    .user-badge strong { color: var(--text); }
+    .user-badge strong {
+      color: var(--text);
+    }
 
     .logout-btn {
       background: transparent;
@@ -225,7 +284,10 @@
       transition: all 0.2s;
     }
 
-    .logout-btn:hover { border-color: var(--danger); color: var(--danger); }
+    .logout-btn:hover {
+      border-color: var(--danger);
+      color: var(--danger);
+    }
 
     .dashboard-body {
       flex: 1;
@@ -242,7 +304,9 @@
       margin-bottom: 4px;
     }
 
-    .greeting span { color: var(--gold); }
+    .greeting span {
+      color: var(--gold);
+    }
 
     .greeting-sub {
       font-size: 14px;
@@ -269,7 +333,7 @@
       width: 180px;
       height: 180px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(201, 168, 76, 0.12) 0%, transparent 70%);
     }
 
     .balance-label {
@@ -288,7 +352,10 @@
       margin-bottom: 16px;
     }
 
-    .balance-amount .currency { font-size: 22px; margin-right: 4px; }
+    .balance-amount .currency {
+      font-size: 22px;
+      margin-right: 4px;
+    }
 
     .balance-meta {
       display: flex;
@@ -320,7 +387,7 @@
       top: 24px;
       right: 24px;
       background: var(--gold-dim);
-      border: 1px solid rgba(201,168,76,0.2);
+      border: 1px solid rgba(201, 168, 76, 0.2);
       color: var(--gold);
       padding: 8px 14px;
       border-radius: 8px;
@@ -329,7 +396,9 @@
       transition: all 0.2s;
     }
 
-    .refresh-btn:hover { background: rgba(201,168,76,0.2); }
+    .refresh-btn:hover {
+      background: rgba(201, 168, 76, 0.2);
+    }
 
     /* Status banner */
     .status-banner {
@@ -343,14 +412,14 @@
     }
 
     .status-banner.unverified {
-      background: rgba(224,90,90,0.08);
-      border: 1px solid rgba(224,90,90,0.2);
+      background: rgba(224, 90, 90, 0.08);
+      border: 1px solid rgba(224, 90, 90, 0.2);
       color: #e05a5a;
     }
 
     .status-banner.verified {
-      background: rgba(76,175,125,0.08);
-      border: 1px solid rgba(76,175,125,0.2);
+      background: rgba(76, 175, 125, 0.08);
+      border: 1px solid rgba(76, 175, 125, 0.2);
       color: #4caf7d;
     }
 
@@ -361,8 +430,13 @@
       flex-shrink: 0;
     }
 
-    .unverified .status-dot { background: var(--danger); }
-    .verified .status-dot { background: var(--success); }
+    .unverified .status-dot {
+      background: var(--danger);
+    }
+
+    .verified .status-dot {
+      background: var(--success);
+    }
 
     .status-action {
       margin-left: auto;
@@ -428,7 +502,11 @@
     }
 
     /* Transaction history */
-    .tx-list { display: flex; flex-direction: column; gap: 10px; }
+    .tx-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
 
     .tx-item {
       background: var(--surface);
@@ -452,12 +530,29 @@
       flex-shrink: 0;
     }
 
-    .tx-icon.sent { background: rgba(224,90,90,0.12); }
-    .tx-icon.received { background: rgba(76,175,125,0.12); }
+    .tx-icon.sent {
+      background: rgba(224, 90, 90, 0.12);
+    }
 
-    .tx-info { flex: 1; }
-    .tx-ref { font-size: 13px; font-weight: 500; color: var(--text); }
-    .tx-date { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .tx-icon.received {
+      background: rgba(76, 175, 125, 0.12);
+    }
+
+    .tx-info {
+      flex: 1;
+    }
+
+    .tx-ref {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .tx-date {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
 
     .tx-amount {
       font-family: 'Syne', sans-serif;
@@ -465,8 +560,13 @@
       font-weight: 700;
     }
 
-    .tx-amount.sent { color: var(--danger); }
-    .tx-amount.received { color: var(--success); }
+    .tx-amount.sent {
+      color: var(--danger);
+    }
+
+    .tx-amount.received {
+      color: var(--success);
+    }
 
     .tx-status {
       font-size: 10px;
@@ -477,15 +577,26 @@
       font-weight: 600;
     }
 
-    .tx-status.success { background: rgba(76,175,125,0.12); color: var(--success); }
-    .tx-status.pending { background: rgba(201,168,76,0.12); color: var(--gold); }
-    .tx-status.failed { background: rgba(224,90,90,0.12); color: var(--danger); }
+    .tx-status.success {
+      background: rgba(76, 175, 125, 0.12);
+      color: var(--success);
+    }
+
+    .tx-status.pending {
+      background: rgba(201, 168, 76, 0.12);
+      color: var(--gold);
+    }
+
+    .tx-status.failed {
+      background: rgba(224, 90, 90, 0.12);
+      color: var(--danger);
+    }
 
     /* ── MODAL ── */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.7);
+      background: rgba(0, 0, 0, 0.7);
       backdrop-filter: blur(4px);
       z-index: 200;
       display: none;
@@ -494,7 +605,9 @@
       padding: 24px;
     }
 
-    .modal-overlay.open { display: flex; }
+    .modal-overlay.open {
+      display: flex;
+    }
 
     .modal {
       background: var(--surface);
@@ -529,14 +642,16 @@
       margin-top: -4px;
     }
 
-    .modal-close:hover { color: var(--text); }
+    .modal-close:hover {
+      color: var(--text);
+    }
 
     /* Spinner */
     .spinner {
       display: inline-block;
       width: 16px;
       height: 16px;
-      border: 2px solid rgba(0,0,0,0.3);
+      border: 2px solid rgba(0, 0, 0, 0.3);
       border-top-color: #0a0c10;
       border-radius: 50%;
       animation: spin 0.7s linear infinite;
@@ -544,7 +659,11 @@
       margin-right: 6px;
     }
 
-    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
 
     .empty-state {
       text-align: center;
@@ -553,516 +672,531 @@
       font-size: 14px;
     }
 
-    .empty-state .icon { font-size: 36px; margin-bottom: 12px; }
+    .empty-state .icon {
+      font-size: 36px;
+      margin-bottom: 12px;
+    }
 
     /* Responsive */
     @media (max-width: 600px) {
-      .auth-card { padding: 32px 24px; }
-      .dashboard-body { padding: 20px 16px; }
-      .topbar { padding: 16px 20px; }
-      .balance-amount { font-size: 32px; }
+      .auth-card {
+        padding: 32px 24px;
+      }
+
+      .dashboard-body {
+        padding: 20px 16px;
+      }
+
+      .topbar {
+        padding: 16px 20px;
+      }
+
+      .balance-amount {
+        font-size: 32px;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<!-- ══════════════════════════════════════
+  <!-- ══════════════════════════════════════
      SCREEN 1: LOGIN
 ══════════════════════════════════════ -->
-<div class="screen active" id="loginScreen">
-  <div class="auth-wrap">
-    <div class="auth-card">
-      <div class="logo">ZOE<span>Bank</span></div>
-      <div class="auth-subtitle">Sign in to your account</div>
+  <div class="screen active" id="loginScreen">
+    <div class="auth-wrap">
+      <div class="auth-card">
+        <div class="logo">ZOE<span>Bank</span></div>
+        <div class="auth-subtitle">Sign in to your account</div>
 
-      <div class="alert alert-error" id="loginError"></div>
-      <div class="alert alert-success" id="loginSuccess"></div>
+        <div class="alert alert-error" id="loginError"></div>
+        <div class="alert alert-success" id="loginSuccess"></div>
 
-      <div class="form-group">
-        <label>Email Address</label>
-        <input type="email" id="loginEmail" placeholder="you@example.com"/>
-      </div>
-      <div class="form-group">
-        <label>Password</label>
-        <input type="password" id="loginPassword" placeholder="••••••••"/>
-      </div>
-      <button class="btn" onclick="login()">Sign In</button>
-      <div class="auth-switch">
-        Don't have an account? <a onclick="showScreen('registerScreen')">Create one</a>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="loginEmail" placeholder="you@example.com" />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="loginPassword" placeholder="••••••••" />
+        </div>
+        <button class="btn" onclick="login()">Sign In</button>
+        <div class="auth-switch">
+          Don't have an account? <a onclick="showScreen('registerScreen')">Create one</a>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- ══════════════════════════════════════
+  <!-- ══════════════════════════════════════
      SCREEN 2: REGISTER
 ══════════════════════════════════════ -->
-<div class="screen" id="registerScreen">
-  <div class="auth-wrap">
-    <div class="auth-card">
-      <div class="logo">ZOE<span>Bank</span></div>
-      <div class="auth-subtitle">Create your account</div>
+  <div class="screen" id="registerScreen">
+    <div class="auth-wrap">
+      <div class="auth-card">
+        <div class="logo">ZOE<span>Bank</span></div>
+        <div class="auth-subtitle">Create your account</div>
 
-      <div class="alert alert-error" id="registerError"></div>
-      <div class="alert alert-success" id="registerSuccess"></div>
+        <div class="alert alert-error" id="registerError"></div>
+        <div class="alert alert-success" id="registerSuccess"></div>
 
-      <div class="form-group">
-        <label>Full Name</label>
-        <input type="text" id="regName" placeholder="John Doe"/>
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="regName" placeholder="John Doe" />
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="regEmail" placeholder="you@example.com" />
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" id="regPhone" placeholder="08012345678" />
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" id="regPassword" placeholder="••••••••" />
+        </div>
+        <button class="btn" onclick="register()">Create Account</button>
+        <button class="btn btn-outline" onclick="showScreen('loginScreen')">Already have an account</button>
       </div>
-      <div class="form-group">
-        <label>Email Address</label>
-        <input type="email" id="regEmail" placeholder="you@example.com"/>
-      </div>
-      <div class="form-group">
-        <label>Phone Number</label>
-        <input type="tel" id="regPhone" placeholder="08012345678"/>
-      </div>
-      <div class="form-group">
-        <label>Password</label>
-        <input type="password" id="regPassword" placeholder="••••••••"/>
-      </div>
-      <button class="btn" onclick="register()">Create Account</button>
-      <button class="btn btn-outline" onclick="showScreen('loginScreen')">Already have an account</button>
     </div>
   </div>
-</div>
 
-<!-- ══════════════════════════════════════
+  <!-- ══════════════════════════════════════
      SCREEN 3: DASHBOARD
 ══════════════════════════════════════ -->
-<div class="screen" id="dashboard">
-  <div class="topbar">
-    <div class="topbar-logo">ZOE<span>Bank</span></div>
-    <div class="topbar-right">
-      <div class="user-badge">Welcome, <strong id="userName">—</strong></div>
-      <button class="logout-btn" onclick="logout()">Sign Out</button>
+  <div class="screen" id="dashboard">
+    <div class="topbar">
+      <div class="topbar-logo">ZOE<span>Bank</span></div>
+      <div class="topbar-right">
+        <div class="user-badge">Welcome, <strong id="userName">—</strong></div>
+        <button class="logout-btn" onclick="logout()">Sign Out</button>
+      </div>
+    </div>
+
+    <div class="dashboard-body">
+      <div class="greeting">Good day, <span id="greetName">—</span> 👋</div>
+      <div class="greeting-sub">Here's your financial overview</div>
+
+      <!-- Status banner -->
+      <div class="status-banner unverified" id="statusBanner">
+        <div class="status-dot"></div>
+        <span id="statusText">Your account is not verified. Please verify your BVN or NIN.</span>
+        <button class="status-action" onclick="openModal('verifyModal')">Verify Now</button>
+      </div>
+
+      <!-- Balance card -->
+      <div class="balance-card">
+        <button class="refresh-btn" onclick="fetchBalance()">↻ Refresh</button>
+        <div class="balance-label">Available Balance</div>
+        <div class="balance-amount">
+          <span class="currency">₦</span><span id="balanceAmount">—</span>
+        </div>
+        <div class="balance-meta">
+          <div class="balance-meta-item">
+            <span class="balance-meta-label">Account Number</span>
+            <span class="balance-meta-value" id="accountNumber">—</span>
+          </div>
+          <div class="balance-meta-item">
+            <span class="balance-meta-label">Bank</span>
+            <span class="balance-meta-value">ZOE Bank</span>
+          </div>
+          <div class="balance-meta-item">
+            <span class="balance-meta-label">Status</span>
+            <span class="balance-meta-value" id="acctStatus">—</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick actions -->
+      <div class="section-title">Quick Actions</div>
+      <div class="actions-grid">
+        <div class="action-card" onclick="openModal('transferModal')">
+          <span class="action-icon">💸</span>
+          <div class="action-name">Transfer</div>
+          <div class="action-desc">Send money instantly</div>
+        </div>
+        <div class="action-card" onclick="fetchBalance()">
+          <span class="action-icon">💰</span>
+          <div class="action-name">Check Balance</div>
+          <div class="action-desc">View current balance</div>
+        </div>
+        <div class="action-card" onclick="fetchTransactions()">
+          <span class="action-icon">📋</span>
+          <div class="action-name">History</div>
+          <div class="action-desc">View transactions</div>
+        </div>
+        <div class="action-card" onclick="openModal('verifyModal')">
+          <span class="action-icon">🔐</span>
+          <div class="action-name">Verify Identity</div>
+          <div class="action-desc">BVN or NIN verification</div>
+        </div>
+        <div class="action-card" onclick="openModal('createAccountModal')">
+          <span class="action-icon">🏦</span>
+          <div class="action-name">Create Account</div>
+          <div class="action-desc">Open a bank account</div>
+        </div>
+      </div>
+
+      <!-- Transaction history -->
+      <div class="section-title">Recent Transactions</div>
+      <div id="txList" class="tx-list">
+        <div class="empty-state">
+          <div class="icon">📭</div>
+          Click "History" to load your transactions
+        </div>
+      </div>
     </div>
   </div>
 
-  <div class="dashboard-body">
-    <div class="greeting">Good day, <span id="greetName">—</span> 👋</div>
-    <div class="greeting-sub">Here's your financial overview</div>
-
-    <!-- Status banner -->
-    <div class="status-banner unverified" id="statusBanner">
-      <div class="status-dot"></div>
-      <span id="statusText">Your account is not verified. Please verify your BVN or NIN.</span>
-      <button class="status-action" onclick="openModal('verifyModal')">Verify Now</button>
-    </div>
-
-    <!-- Balance card -->
-    <div class="balance-card">
-      <button class="refresh-btn" onclick="fetchBalance()">↻ Refresh</button>
-      <div class="balance-label">Available Balance</div>
-      <div class="balance-amount">
-        <span class="currency">₦</span><span id="balanceAmount">—</span>
-      </div>
-      <div class="balance-meta">
-        <div class="balance-meta-item">
-          <span class="balance-meta-label">Account Number</span>
-          <span class="balance-meta-value" id="accountNumber">—</span>
-        </div>
-        <div class="balance-meta-item">
-          <span class="balance-meta-label">Bank</span>
-          <span class="balance-meta-value">ZOE Bank</span>
-        </div>
-        <div class="balance-meta-item">
-          <span class="balance-meta-label">Status</span>
-          <span class="balance-meta-value" id="acctStatus">—</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Quick actions -->
-    <div class="section-title">Quick Actions</div>
-    <div class="actions-grid">
-      <div class="action-card" onclick="openModal('transferModal')">
-        <span class="action-icon">💸</span>
-        <div class="action-name">Transfer</div>
-        <div class="action-desc">Send money instantly</div>
-      </div>
-      <div class="action-card" onclick="fetchBalance()">
-        <span class="action-icon">💰</span>
-        <div class="action-name">Check Balance</div>
-        <div class="action-desc">View current balance</div>
-      </div>
-      <div class="action-card" onclick="fetchTransactions()">
-        <span class="action-icon">📋</span>
-        <div class="action-name">History</div>
-        <div class="action-desc">View transactions</div>
-      </div>
-      <div class="action-card" onclick="openModal('verifyModal')">
-        <span class="action-icon">🔐</span>
-        <div class="action-name">Verify Identity</div>
-        <div class="action-desc">BVN or NIN verification</div>
-      </div>
-      <div class="action-card" onclick="openModal('createAccountModal')">
-        <span class="action-icon">🏦</span>
-        <div class="action-name">Create Account</div>
-        <div class="action-desc">Open a bank account</div>
-      </div>
-    </div>
-
-    <!-- Transaction history -->
-    <div class="section-title">Recent Transactions</div>
-    <div id="txList" class="tx-list">
-      <div class="empty-state">
-        <div class="icon">📭</div>
-        Click "History" to load your transactions
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════════════════════════════════
+  <!-- ══════════════════════════════════════
      MODALS
 ══════════════════════════════════════ -->
 
-<!-- Verify Modal -->
-<div class="modal-overlay" id="verifyModal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('verifyModal')">✕</button>
-    <div class="modal-title">Verify Identity</div>
-    <div class="modal-sub">Verify your BVN or NIN to unlock full banking features</div>
+  <!-- Verify Modal -->
+  <div class="modal-overlay" id="verifyModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('verifyModal')">✕</button>
+      <div class="modal-title">Verify Identity</div>
+      <div class="modal-sub">Verify your BVN or NIN to unlock full banking features</div>
 
-    <div class="alert alert-error" id="verifyError"></div>
-    <div class="alert alert-success" id="verifySuccess"></div>
+      <div class="alert alert-error" id="verifyError"></div>
+      <div class="alert alert-success" id="verifySuccess"></div>
 
-    <div class="form-group">
-      <label>Verification Type</label>
-      <select id="kycTypeVerify" onchange="toggleVerifyFields()">
-        <option value="BVN">BVN</option>
-        <option value="NIN">NIN</option>
-      </select>
+      <div class="form-group">
+        <label>Verification Type</label>
+        <select id="kycTypeVerify" onchange="toggleVerifyFields()">
+          <option value="BVN">BVN</option>
+          <option value="NIN">NIN</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>First Name</label>
+        <input type="text" id="verifyFirst" placeholder="John" />
+      </div>
+      <div class="form-group">
+        <label>Last Name</label>
+        <input type="text" id="verifyLast" placeholder="Doe" />
+      </div>
+      <div class="form-group">
+        <label>Date of Birth</label>
+        <input type="date" id="verifyDob" />
+      </div>
+      <div class="form-group" id="bvnNumGroup">
+        <label>BVN Number</label>
+        <input type="text" id="verifyBvn" placeholder="11 digit BVN" />
+      </div>
+      <div class="form-group" id="ninNumGroup" style="display:none">
+        <label>NIN Number</label>
+        <input type="text" id="verifyNin" placeholder="11 digit NIN" />
+      </div>
+      <div class="form-group" id="phoneVerifyGroup">
+        <label>Phone Number</label>
+        <input type="text" id="verifyPhone" placeholder="08012345678" />
+      </div>
+      <button class="btn" onclick="verifyIdentity()">Verify Identity</button>
     </div>
-    <div class="form-group">
-      <label>First Name</label>
-      <input type="text" id="verifyFirst" placeholder="John"/>
-    </div>
-    <div class="form-group">
-      <label>Last Name</label>
-      <input type="text" id="verifyLast" placeholder="Doe"/>
-    </div>
-    <div class="form-group">
-      <label>Date of Birth</label>
-      <input type="date" id="verifyDob"/>
-    </div>
-    <div class="form-group" id="bvnNumGroup">
-      <label>BVN Number</label>
-      <input type="text" id="verifyBvn" placeholder="11 digit BVN"/>
-    </div>
-    <div class="form-group" id="ninNumGroup" style="display:none">
-      <label>NIN Number</label>
-      <input type="text" id="verifyNin" placeholder="11 digit NIN"/>
-    </div>
-    <div class="form-group" id="phoneVerifyGroup">
-      <label>Phone Number</label>
-      <input type="text" id="verifyPhone" placeholder="08012345678"/>
-    </div>
-    <button class="btn" onclick="verifyIdentity()">Verify Identity</button>
   </div>
-</div>
 
-<!-- Create Account Modal -->
-<div class="modal-overlay" id="createAccountModal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('createAccountModal')">✕</button>
-    <div class="modal-title">Create Bank Account</div>
-    <div class="modal-sub">Open your ZOE Bank account. You must be verified first.</div>
+  <!-- Create Account Modal -->
+  <div class="modal-overlay" id="createAccountModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('createAccountModal')">✕</button>
+      <div class="modal-title">Create Bank Account</div>
+      <div class="modal-sub">Open your ZOE Bank account. You must be verified first.</div>
 
-    <div class="alert alert-error" id="createAcctError"></div>
-    <div class="alert alert-success" id="createAcctSuccess"></div>
+      <div class="alert alert-error" id="createAcctError"></div>
+      <div class="alert alert-success" id="createAcctSuccess"></div>
 
-    <div class="form-group">
-      <label>KYC Type</label>
-      <select id="kycTypeAcct">
-        <option value="BVN">BVN</option>
-        <option value="NIN">NIN</option>
-      </select>
+      <div class="form-group">
+        <label>KYC Type</label>
+        <select id="kycTypeAcct">
+          <option value="BVN">BVN</option>
+          <option value="NIN">NIN</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Date of Birth</label>
+        <input type="date" id="acctDob" />
+      </div>
+      <button class="btn" onclick="createAccount()">Create Account</button>
     </div>
-    <div class="form-group">
-      <label>Date of Birth</label>
-      <input type="date" id="acctDob"/>
-    </div>
-    <button class="btn" onclick="createAccount()">Create Account</button>
   </div>
-</div>
 
-<!-- Transfer Modal -->
-<div class="modal-overlay" id="transferModal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal('transferModal')">✕</button>
-    <div class="modal-title">Send Money</div>
-    <div class="modal-sub">Transfer funds to any ZOE Bank or other bank account</div>
+  <!-- Transfer Modal -->
+  <div class="modal-overlay" id="transferModal">
+    <div class="modal">
+      <button class="modal-close" onclick="closeModal('transferModal')">✕</button>
+      <div class="modal-title">Send Money</div>
+      <div class="modal-sub">Transfer funds to any ZOE Bank or other bank account</div>
 
-    <div class="alert alert-error" id="transferError"></div>
-    <div class="alert alert-success" id="transferSuccess"></div>
+      <div class="alert alert-error" id="transferError"></div>
+      <div class="alert alert-success" id="transferSuccess"></div>
 
-    <div class="form-group">
-      <label>Recipient Account Number</label>
-      <input type="text" id="transferTo" placeholder="10-digit account number" oninput="enquireOnType()"/>
+      <div class="form-group">
+        <label>Recipient Account Number</label>
+        <input type="text" id="transferTo" placeholder="10-digit account number" oninput="enquireOnType()" />
+      </div>
+      <div id="recipientName" style="font-size:13px; color: var(--gold); margin-bottom:14px; min-height:18px;"></div>
+      <div class="form-group">
+        <label>Amount (₦)</label>
+        <input type="number" id="transferAmount" placeholder="0.00" />
+      </div>
+      <div class="form-group">
+        <label>Narration (optional)</label>
+        <input type="text" id="transferNarration" placeholder="e.g. Rent payment" />
+      </div>
+      <button class="btn" onclick="sendTransfer()">Send Money</button>
     </div>
-    <div id="recipientName" style="font-size:13px; color: var(--gold); margin-bottom:14px; min-height:18px;"></div>
-    <div class="form-group">
-      <label>Amount (₦)</label>
-      <input type="number" id="transferAmount" placeholder="0.00"/>
-    </div>
-    <div class="form-group">
-      <label>Narration (optional)</label>
-      <input type="text" id="transferNarration" placeholder="e.g. Rent payment"/>
-    </div>
-    <button class="btn" onclick="sendTransfer()">Send Money</button>
   </div>
-</div>
 
-<script>
-  const API = 'https://bankingappsystemapi.onrender.com/api';
-  let token = localStorage.getItem('zoe_token');
-  let currentUser = JSON.parse(localStorage.getItem('zoe_user') || 'null');
-  let enquireTimer = null;
+  <script>
+    const API = 'https://bankingappsystemapi.onrender.com/api';
+    let token = localStorage.getItem('zoe_token');
+    let currentUser = JSON.parse(localStorage.getItem('zoe_user') || 'null');
+    let enquireTimer = null;
 
-  // ── NAVIGATION ──
-  function showScreen(id) {
-    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-    document.getElementById(id).classList.add('active');
-  }
-
-  function openModal(id) { document.getElementById(id).classList.add('open'); }
-  function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-
-  function showAlert(id, msg, type = 'error') {
-    const el = document.getElementById(id);
-    el.textContent = msg;
-    el.className = `alert alert-${type} show`;
-    setTimeout(() => el.classList.remove('show'), 5000);
-  }
-
-  // ── INIT ──
-  window.onload = () => {
-    if (token && currentUser) {
-      loadDashboard();
+    // ── NAVIGATION ──
+    function showScreen(id) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
     }
-  };
 
-  function loadDashboard() {
-    document.getElementById('userName').textContent = currentUser.name?.split(' ')[0] || '—';
-    document.getElementById('greetName').textContent = currentUser.name?.split(' ')[0] || '—';
-    updateStatusBanner();
-    showScreen('dashboard');
-  }
+    function openModal(id) { document.getElementById(id).classList.add('open'); }
+    function closeModal(id) { document.getElementById(id).classList.remove('open'); }
 
-  function updateStatusBanner() {
-    const banner = document.getElementById('statusBanner');
-    const text = document.getElementById('statusText');
-    if (currentUser?.isVerified) {
-      banner.className = 'status-banner verified';
-      text.textContent = 'Identity verified. Your account is in good standing.';
-    } else {
-      banner.className = 'status-banner unverified';
-      text.textContent = 'Your identity is not verified. Please verify your BVN or NIN.';
+    function showAlert(id, msg, type = 'error') {
+      const el = document.getElementById(id);
+      el.textContent = msg;
+      el.className = `alert alert-${type} show`;
+      setTimeout(() => el.classList.remove('show'), 5000);
     }
-  }
 
-  function logout() {
-    localStorage.removeItem('zoe_token');
-    localStorage.removeItem('zoe_user');
-    token = null;
-    currentUser = null;
-    showScreen('loginScreen');
-  }
-
-  // ── AUTH ──
-  async function login() {
-    const email = document.getElementById('loginEmail').value.trim();
-    const password = document.getElementById('loginPassword').value;
-    if (!email || !password) return showAlert('loginError', 'Please fill all fields');
-
-    const btn = document.querySelector('#loginScreen .btn');
-    btn.innerHTML = '<span class="spinner"></span> Signing in...';
-    btn.disabled = true;
-
-    try {
-      const res = await fetch(`${API}/onboarding/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message || 'Login failed');
-
-      token = data.token;
-      localStorage.setItem('zoe_token', token);
-
-      // Fetch customer profile
-      const decoded = JSON.parse(atob(token.split('.')[1]));
-      currentUser = { id: decoded.id, name: email.split('@')[0], email, isVerified: false, accountCreated: false };
-      localStorage.setItem('zoe_user', JSON.stringify(currentUser));
-
-      loadDashboard();
-    } catch (e) {
-      showAlert('loginError', e.message);
-    } finally {
-      btn.innerHTML = 'Sign In';
-      btn.disabled = false;
-    }
-  }
-
-  async function register() {
-    const name = document.getElementById('regName').value.trim();
-    const email = document.getElementById('regEmail').value.trim();
-    const phone = document.getElementById('regPhone').value.trim();
-    const password = document.getElementById('regPassword').value;
-    if (!name || !email || !phone || !password) return showAlert('registerError', 'Please fill all fields');
-
-    const btn = document.querySelector('#registerScreen .btn');
-    btn.innerHTML = '<span class="spinner"></span> Creating...';
-    btn.disabled = true;
-
-    try {
-      const res = await fetch(`${API}/onboarding/register`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, phone, password })
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message || 'Registration failed');
-
-      showAlert('registerSuccess', 'Account created! Please sign in.', 'success');
-      setTimeout(() => showScreen('loginScreen'), 2000);
-    } catch (e) {
-      showAlert('registerError', e.message);
-    } finally {
-      btn.innerHTML = 'Create Account';
-      btn.disabled = false;
-    }
-  }
-
-  // ── VERIFY ──
-  function toggleVerifyFields() {
-    const type = document.getElementById('kycTypeVerify').value;
-    document.getElementById('bvnNumGroup').style.display = type === 'BVN' ? 'block' : 'none';
-    document.getElementById('ninNumGroup').style.display = type === 'NIN' ? 'block' : 'none';
-    document.getElementById('phoneVerifyGroup').style.display = type === 'BVN' ? 'block' : 'none';
-  }
-
-  async function verifyIdentity() {
-    const type = document.getElementById('kycTypeVerify').value;
-    const firstName = document.getElementById('verifyFirst').value.trim();
-    const lastName = document.getElementById('verifyLast').value.trim();
-    const dob = document.getElementById('verifyDob').value;
-    const bvn = document.getElementById('verifyBvn').value.trim();
-    const nin = document.getElementById('verifyNin').value.trim();
-    const phone = document.getElementById('verifyPhone').value.trim();
-
-    if (!firstName || !lastName || !dob) return showAlert('verifyError', 'Please fill all fields');
-
-    const btn = document.querySelector('#verifyModal .btn');
-    btn.innerHTML = '<span class="spinner"></span> Verifying...';
-    btn.disabled = true;
-
-    try {
-      const endpoint = type === 'BVN' ? '/onboarding/verify-bvn' : '/onboarding/verify-nin';
-      const body = type === 'BVN'
-        ? { firstName, lastName, dob, bvn, phone }
-        : { firstName, lastName, dob, nin };
-
-      const res = await fetch(`${API}${endpoint}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-        body: JSON.stringify(body)
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message || data.error || 'Verification failed');
-
-      currentUser.isVerified = true;
-      localStorage.setItem('zoe_user', JSON.stringify(currentUser));
-      updateStatusBanner();
-      showAlert('verifySuccess', `${type} verified successfully!`, 'success');
-      setTimeout(() => closeModal('verifyModal'), 2000);
-    } catch (e) {
-      showAlert('verifyError', e.message);
-    } finally {
-      btn.innerHTML = 'Verify Identity';
-      btn.disabled = false;
-    }
-  }
-
-  // ── CREATE ACCOUNT ──
-  async function createAccount() {
-    const kycType = document.getElementById('kycTypeAcct').value;
-    const dob = document.getElementById('acctDob').value;
-    if (!dob) return showAlert('createAcctError', 'Please enter your date of birth');
-
-    const btn = document.querySelector('#createAccountModal .btn');
-    btn.innerHTML = '<span class="spinner"></span> Creating...';
-    btn.disabled = true;
-
-    try {
-      const res = await fetch(`${API}/account/create`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-        body: JSON.stringify({ kycType, dob })
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message || data.error || 'Account creation failed');
-
-      currentUser.accountCreated = true;
-      localStorage.setItem('zoe_user', JSON.stringify(currentUser));
-      showAlert('createAcctSuccess', 'Bank account created successfully! 🎉', 'success');
-      setTimeout(() => { closeModal('createAccountModal'); fetchBalance(); }, 2000);
-    } catch (e) {
-      showAlert('createAcctError', e.message);
-    } finally {
-      btn.innerHTML = 'Create Account';
-      btn.disabled = false;
-    }
-  }
-
-  // ── BALANCE ──
-  async function fetchBalance() {
-    document.getElementById('balanceAmount').textContent = '...';
-    try {
-      const res = await fetch(`${API}/account/balance`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message);
-
-      const bal = data.balance?.data?.balance ?? data.balance?.balance ?? data.balance ?? '—';
-      const acctNum = data.balance?.accountNumber ?? '—';
-      document.getElementById('balanceAmount').textContent = Number(bal).toLocaleString('en-NG', { minimumFractionDigits: 2 });
-      document.getElementById('accountNumber').textContent = acctNum;
-      document.getElementById('acctStatus').textContent = 'Active';
-    } catch (e) {
-      document.getElementById('balanceAmount').textContent = '—';
-      document.getElementById('acctStatus').textContent = 'No account';
-    }
-  }
-
-  // ── TRANSACTIONS ──
-  async function fetchTransactions() {
-    const list = document.getElementById('txList');
-    list.innerHTML = '<div class="empty-state"><div class="icon">⏳</div>Loading transactions...</div>';
-    try {
-      const res = await fetch(`${API}/transaction/history`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message);
-
-      const txs = data.transactions || [];
-      if (!txs.length) {
-        list.innerHTML = '<div class="empty-state"><div class="icon">📭</div>No transactions yet</div>';
-        return;
+    // ── INIT ──
+    window.onload = () => {
+      if (token && currentUser) {
+        loadDashboard();
       }
+    };
 
-      list.innerHTML = txs.map(tx => `
+    function loadDashboard() {
+      document.getElementById('userName').textContent = currentUser.name?.split(' ')[0] || '—';
+      document.getElementById('greetName').textContent = currentUser.name?.split(' ')[0] || '—';
+      updateStatusBanner();
+      showScreen('dashboard');
+    }
+
+    function updateStatusBanner() {
+      const banner = document.getElementById('statusBanner');
+      const text = document.getElementById('statusText');
+      if (currentUser?.isVerified) {
+        banner.className = 'status-banner verified';
+        text.textContent = 'Identity verified. Your account is in good standing.';
+      } else {
+        banner.className = 'status-banner unverified';
+        text.textContent = 'Your identity is not verified. Please verify your BVN or NIN.';
+      }
+    }
+
+    function logout() {
+      localStorage.removeItem('zoe_token');
+      localStorage.removeItem('zoe_user');
+      token = null;
+      currentUser = null;
+      showScreen('loginScreen');
+    }
+
+    // ── AUTH ──
+    async function login() {
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+      if (!email || !password) return showAlert('loginError', 'Please fill all fields');
+
+      const btn = document.querySelector('#loginScreen .btn');
+      btn.innerHTML = '<span class="spinner"></span> Signing in...';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(`${API}/onboarding/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.message || 'Login failed');
+
+        token = data.token;
+        localStorage.setItem('zoe_token', token);
+
+        // Fetch customer profile
+        const decoded = JSON.parse(atob(token.split('.')[1]));
+        currentUser = { id: decoded.id, name: email.split('@')[0], email, isVerified: false, accountCreated: false };
+        localStorage.setItem('zoe_user', JSON.stringify(currentUser));
+
+        loadDashboard();
+      } catch (e) {
+        showAlert('loginError', e.message);
+      } finally {
+        btn.innerHTML = 'Sign In';
+        btn.disabled = false;
+      }
+    }
+
+    async function register() {
+      const name = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const phone = document.getElementById('regPhone').value.trim();
+      const password = document.getElementById('regPassword').value;
+      if (!name || !email || !phone || !password) return showAlert('registerError', 'Please fill all fields');
+
+      const btn = document.querySelector('#registerScreen .btn');
+      btn.innerHTML = '<span class="spinner"></span> Creating...';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(`${API}/onboarding/register`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, phone, password })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.message || 'Registration failed');
+
+        showAlert('registerSuccess', 'Account created! Please sign in.', 'success');
+        setTimeout(() => showScreen('loginScreen'), 2000);
+      } catch (e) {
+        showAlert('registerError', e.message);
+      } finally {
+        btn.innerHTML = 'Create Account';
+        btn.disabled = false;
+      }
+    }
+
+    // ── VERIFY ──
+    function toggleVerifyFields() {
+      const type = document.getElementById('kycTypeVerify').value;
+      document.getElementById('bvnNumGroup').style.display = type === 'BVN' ? 'block' : 'none';
+      document.getElementById('ninNumGroup').style.display = type === 'NIN' ? 'block' : 'none';
+      document.getElementById('phoneVerifyGroup').style.display = type === 'BVN' ? 'block' : 'none';
+    }
+
+    async function verifyIdentity() {
+      const type = document.getElementById('kycTypeVerify').value;
+      const firstName = document.getElementById('verifyFirst').value.trim();
+      const lastName = document.getElementById('verifyLast').value.trim();
+      const dob = document.getElementById('verifyDob').value;
+      const bvn = document.getElementById('verifyBvn').value.trim();
+      const nin = document.getElementById('verifyNin').value.trim();
+      const phone = document.getElementById('verifyPhone').value.trim();
+
+      if (!firstName || !lastName || !dob) return showAlert('verifyError', 'Please fill all fields');
+
+      const btn = document.querySelector('#verifyModal .btn');
+      btn.innerHTML = '<span class="spinner"></span> Verifying...';
+      btn.disabled = true;
+
+      try {
+        const endpoint = type === 'BVN' ? '/onboarding/verify-bvn' : '/onboarding/verify-nin';
+        const body = type === 'BVN'
+          ? { firstName, lastName, dob, bvn, phone }
+          : { firstName, lastName, dob, nin };
+
+        const res = await fetch(`${API}${endpoint}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+          body: JSON.stringify(body)
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.message || data.error || 'Verification failed');
+
+        currentUser.isVerified = true;
+        localStorage.setItem('zoe_user', JSON.stringify(currentUser));
+        updateStatusBanner();
+        showAlert('verifySuccess', `${type} verified successfully!`, 'success');
+        setTimeout(() => closeModal('verifyModal'), 2000);
+      } catch (e) {
+        showAlert('verifyError', e.message);
+      } finally {
+        btn.innerHTML = 'Verify Identity';
+        btn.disabled = false;
+      }
+    }
+
+    // ── CREATE ACCOUNT ──
+    async function createAccount() {
+      const kycType = document.getElementById('kycTypeAcct').value;
+      const dob = document.getElementById('acctDob').value;
+      if (!dob) return showAlert('createAcctError', 'Please enter your date of birth');
+
+      const btn = document.querySelector('#createAccountModal .btn');
+      btn.innerHTML = '<span class="spinner"></span> Creating...';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch(`${API}/account/create`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+          body: JSON.stringify({ kycType, dob })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.message || data.error || 'Account creation failed');
+
+        currentUser.accountCreated = true;
+        localStorage.setItem('zoe_user', JSON.stringify(currentUser));
+        showAlert('createAcctSuccess', 'Bank account created successfully! 🎉', 'success');
+        setTimeout(() => { closeModal('createAccountModal'); fetchBalance(); }, 2000);
+      } catch (e) {
+        showAlert('createAcctError', e.message);
+      } finally {
+        btn.innerHTML = 'Create Account';
+        btn.disabled = false;
+      }
+    }
+
+    // ── BALANCE ──
+    async function fetchBalance() {
+      document.getElementById('balanceAmount').textContent = '...';
+      try {
+        const res = await fetch(`${API}/account/balance`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.message);
+
+        const bal = data.balance?.balance ?? '—';
+        const acctNum = data.balance?.accountNumber ?? '—';
+        document.getElementById('balanceAmount').textContent = Number(bal).toLocaleString('en-NG', { minimumFractionDigits: 2 });
+        document.getElementById('accountNumber').textContent = acctNum;
+        document.getElementById('acctStatus').textContent = 'Active';
+      } catch (e) {
+        document.getElementById('balanceAmount').textContent = '—';
+        document.getElementById('acctStatus').textContent = 'No account';
+      }
+    }
+
+    // ── TRANSACTIONS ──
+    async function fetchTransactions() {
+      const list = document.getElementById('txList');
+      list.innerHTML = '<div class="empty-state"><div class="icon">⏳</div>Loading transactions...</div>';
+      try {
+        const res = await fetch(`${API}/transaction/history`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.message);
+
+        const txs = data.transactions || [];
+        if (!txs.length) {
+          list.innerHTML = '<div class="empty-state"><div class="icon">📭</div>No transactions yet</div>';
+          return;
+        }
+
+        list.innerHTML = txs.map(tx => `
         <div class="tx-item">
           <div class="tx-icon sent">💸</div>
           <div class="tx-info">
             <div class="tx-ref">${tx.reference || 'N/A'}</div>
-            <div class="tx-date">${new Date(tx.createdAt).toLocaleDateString('en-NG', { day:'numeric', month:'short', year:'numeric' })}</div>
+            <div class="tx-date">${new Date(tx.createdAt).toLocaleDateString('en-NG', { day: 'numeric', month: 'short', year: 'numeric' })}</div>
           </div>
           <div>
             <div class="tx-amount sent">-₦${Number(tx.amount).toLocaleString()}</div>
@@ -1070,67 +1204,68 @@
           </div>
         </div>
       `).join('');
-    } catch (e) {
-      list.innerHTML = `<div class="empty-state"><div class="icon">⚠️</div>${e.message}</div>`;
+      } catch (e) {
+        list.innerHTML = `<div class="empty-state"><div class="icon">⚠️</div>${e.message}</div>`;
+      }
     }
-  }
 
-  // ── NAME ENQUIRY ──
-  function enquireOnType() {
-    clearTimeout(enquireTimer);
-    const acct = document.getElementById('transferTo').value.trim();
-    document.getElementById('recipientName').textContent = '';
-    if (acct.length === 10) {
-      document.getElementById('recipientName').textContent = 'Looking up account...';
-      enquireTimer = setTimeout(() => doEnquiry(acct), 600);
+    // ── NAME ENQUIRY ──
+    function enquireOnType() {
+      clearTimeout(enquireTimer);
+      const acct = document.getElementById('transferTo').value.trim();
+      document.getElementById('recipientName').textContent = '';
+      if (acct.length === 10) {
+        document.getElementById('recipientName').textContent = 'Looking up account...';
+        enquireTimer = setTimeout(() => doEnquiry(acct), 600);
+      }
     }
-  }
 
-  async function doEnquiry(acct) {
-    try {
-      const res = await fetch(`${API}/account/name-enquiry/${acct}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error('Account not found');
-      const name = data?.data?.accountName || data?.accountName || 'Account found';
-      document.getElementById('recipientName').textContent = '✓ ' + name;
-    } catch {
-      document.getElementById('recipientName').textContent = '✗ Account not found';
-      document.getElementById('recipientName').style.color = 'var(--danger)';
+    async function doEnquiry(acct) {
+      try {
+        const res = await fetch(`${API}/account/name-enquiry/${acct}`, {
+          headers: { Authorization: `Bearer ${token}` }
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error('Account not found');
+        const name = data?.data?.accountName || data?.accountName || 'Account found';
+        document.getElementById('recipientName').textContent = '✓ ' + name;
+      } catch {
+        document.getElementById('recipientName').textContent = '✗ Account not found';
+        document.getElementById('recipientName').style.color = 'var(--danger)';
+      }
     }
-  }
 
-  // ── TRANSFER ──
-  async function sendTransfer() {
-    const to = document.getElementById('transferTo').value.trim();
-    const amount = document.getElementById('transferAmount').value;
-    const narration = document.getElementById('transferNarration').value.trim();
-    if (!to || !amount) return showAlert('transferError', 'Please fill recipient and amount');
+    // ── TRANSFER ──
+    async function sendTransfer() {
+      const to = document.getElementById('transferTo').value.trim();
+      const amount = document.getElementById('transferAmount').value;
+      const narration = document.getElementById('transferNarration').value.trim();
+      if (!to || !amount) return showAlert('transferError', 'Please fill recipient and amount');
 
-    const btn = document.querySelector('#transferModal .btn');
-    btn.innerHTML = '<span class="spinner"></span> Sending...';
-    btn.disabled = true;
+      const btn = document.querySelector('#transferModal .btn');
+      btn.innerHTML = '<span class="spinner"></span> Sending...';
+      btn.disabled = true;
 
-    try {
-      const res = await fetch(`${API}/transfer`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
-        body: JSON.stringify({ to, amount: Number(amount), narration })
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.message || data.error || 'Transfer failed');
+      try {
+        const res = await fetch(`${API}/transfer`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+          body: JSON.stringify({ to, amount: Number(amount), narration })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.message || data.error || 'Transfer failed');
 
-      showAlert('transferSuccess', `₦${Number(amount).toLocaleString()} sent successfully! 🎉`, 'success');
-      setTimeout(() => { closeModal('transferModal'); fetchBalance(); fetchTransactions(); }, 2000);
-    } catch (e) {
-      showAlert('transferError', e.message);
-    } finally {
-      btn.innerHTML = 'Send Money';
-      btn.disabled = false;
+        showAlert('transferSuccess', `₦${Number(amount).toLocaleString()} sent successfully! 🎉`, 'success');
+        setTimeout(() => { closeModal('transferModal'); fetchBalance(); fetchTransactions(); }, 2000);
+      } catch (e) {
+        showAlert('transferError', e.message);
+      } finally {
+        btn.innerHTML = 'Send Money';
+        btn.disabled = false;
+      }
     }
-  }
-</script>
+  </script>
 </body>
+
 </html>
 ```
