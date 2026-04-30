@@ -20,6 +20,8 @@ const createAccount = async (req, res) => {
 
         console.log('kycType:', kycType, 'kycID:', kycID, 'dob:', dob);
 
+        kycType = kycType.toUpperCase();
+
         const nibssAccount = await nibssService.createAccount({ kycType, kycID, dob });
 
         const account = await Account.create({
